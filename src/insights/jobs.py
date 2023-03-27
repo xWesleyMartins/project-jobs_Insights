@@ -5,8 +5,11 @@ import csv
 
 @lru_cache
 def read(path: str) -> List[Dict]:
-    with open(path) as csv_file:
-        return list(csv.DictReader(csv_file))
+    try:
+        with open(path) as csv_file:
+            return list(csv.DictReader(csv_file))
+    except FileExistsError:
+        print(f"file {path} Not found")
 
 
 def get_unique_job_types(path: str) -> List[str]:
