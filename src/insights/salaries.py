@@ -20,21 +20,20 @@ def get_max_salary(path: str) -> int:
 
 
 def get_min_salary(path: str) -> int:
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    raise NotImplementedError
+    try:
+        result_data_file = read(path)
+        salaries_list = [
+            int(row["min_salary"])
+            for row in result_data_file
+            if row["min_salary"].isdigit()
+        ]
+        if not salaries_list:
+            raise ValueError("No valid salaries found.")
+        return min(salaries_list)
+    except ValueError as err:
+        print(str(err))
+    except FileNotFoundError:
+        print(f"file {path} Not found")
 
 
 def matches_salary_range(job: Dict, salary: Union[int, str]) -> bool:
