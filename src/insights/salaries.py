@@ -52,6 +52,15 @@ def matches_salary_range(job: Dict, salary: Union[int, str]) -> bool:
 def filter_by_salary_range(
     jobs: List[dict], salary: Union[str, int]
 ) -> List[Dict]:
+    filter_job_salary_list = []
+    for job in jobs:
+        try:
+            if matches_salary_range(job, salary):
+                filter_job_salary_list.append(job)
+        except ValueError as err:
+            print(f"Error: {err}")
+    return filter_job_salary_list
+
     """Filters a list of jobs by salary range
 
     Parameters
@@ -66,4 +75,4 @@ def filter_by_salary_range(
     list
         Jobs whose salary range contains `salary`
     """
-    raise NotImplementedError
+    # raise NotImplementedError
