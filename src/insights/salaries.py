@@ -60,19 +60,3 @@ def filter_by_salary_range(
         except ValueError as err:
             print(f"Error: {err}")
     return filter_job_salary_list
-
-    """Filters a list of jobs by salary range
-
-    Parameters
-    ----------
-    jobs : list
-        The jobs to be filtered
-    salary : int
-        The salary to be used as filter
-
-    Returns
-    -------
-    list
-        Jobs whose salary range contains `salary`
-    """
-    # raise NotImplementedError
